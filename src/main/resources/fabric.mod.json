@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "${id}",
+  "version": "${version}",
+  "name": "${name}",
+  "description": "masa extension",
+  "authors": [
+    "Cjsah"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Cjsah/MasaExtension",
+    "sources": "https://github.com/Cjsah/MasaExtension",
+    "issues": "https://github.com/Cjsah/MasaExtension/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/${id}/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+    ]
+  },
+  "mixins": [
+    "${id}.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "${minecraft_support}"
+  }
+}
