@@ -21,7 +21,10 @@ public class CjsahMasaExtension {
         cachedServerName = name;
 
         if (Minecraft.getInstance().player != null) {
-            Minecraft.getInstance().player.sendSystemMessage(Component.literal("Server is changed to: " + name));
+            Minecraft.getInstance().getChatListener().handleSystemMessage(
+                Component.translatable("cjsah_masa_extension.server.changed", name),
+                false
+            );
         }
 
         LOGGER.info("Server is changed to: {}", name);
