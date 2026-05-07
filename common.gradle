@@ -132,8 +132,6 @@ dependencies {
 
     autoImplementation "maven.modrinth:litematica:${litematica_version}"
     autoImplementation "maven.modrinth:minihud:${minihud_version}"
-
-
 }
 
 String versionSuffix = project.getVersionSuffix()

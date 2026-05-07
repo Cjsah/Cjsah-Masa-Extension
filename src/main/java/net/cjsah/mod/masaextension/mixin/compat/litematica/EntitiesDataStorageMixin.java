@@ -2,7 +2,6 @@ package net.cjsah.mod.masaextension.mixin.compat.litematica;
 
 import fi.dy.masa.litematica.data.EntitiesDataStorage;
 import net.cjsah.mod.masaextension.CjsahMasaExtension;
-import net.cjsah.mod.masaextension.ModInfo;
 import net.minecraft.nbt.CompoundTag;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,10 +13,6 @@ public class EntitiesDataStorageMixin {
 
     @Inject(method = "receiveServuxMetadata", at = @At(value = "INVOKE", target = "Lfi/dy/masa/litematica/data/EntitiesDataStorage;setServuxVersion(Ljava/lang/String;)V"))
     private void parseMetadata(CompoundTag data, CallbackInfoReturnable<Boolean> cir) {
-        String key = "extra:" + ModInfo.MOD_ID;
-        if (data.contains(key)) {
-            CompoundTag compound = data.getCompound(key);
-            CjsahMasaExtension.setCachedServerName(compound.getString("server_name"));
-        }
+        CjsahMasaExtension.parseMetadata(data);
     }
 }

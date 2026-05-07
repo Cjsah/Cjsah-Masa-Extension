@@ -7,6 +7,10 @@ import net.minecraft.nbt.CompoundTag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+//#if MC >= 12105
+//$$ import java.util.Optional;
+//#endif
+
 public class CjsahMasaExtension {
     public static final Logger LOGGER = LoggerFactory.getLogger(ModInfo.MOD_NAME);
 
@@ -38,5 +42,20 @@ public class CjsahMasaExtension {
         CompoundTag extension = new CompoundTag();
         extension.putString("server_name", ModConfig.getInstance().name());
         metadata.put("extra:" + ModInfo.MOD_ID, extension);
+    }
+
+    public static void parseMetadata(CompoundTag metadata) {
+        String key = "extra:" + ModInfo.MOD_ID;
+        //#if MC < 12105
+        if (metadata.contains(key)) {
+            CompoundTag compound = metadata.getCompound(key);
+            CjsahMasaExtension.setCachedServerName(compound.getString("server_name"));
+        }
+        //#else
+        //$$ Optional<CompoundTag> compound = metadata.getCompound(key);
+        //$$ compound.ifPresent(tag ->
+        //$$     CjsahMasaExtension.setCachedServerName(tag.getStringOr("server_name", "default"))
+        //$$ );
+        //#endif
     }
 }
