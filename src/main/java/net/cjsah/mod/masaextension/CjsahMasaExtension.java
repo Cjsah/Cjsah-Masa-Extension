@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 public class CjsahMasaExtension {
     public static final Logger LOGGER = LoggerFactory.getLogger(ModInfo.MOD_NAME);
 
-    public static String cachedServerName = "default";
+    private static String cachedServerName = "default";
 
     public static String getCachedServerName() {
         return cachedServerName;

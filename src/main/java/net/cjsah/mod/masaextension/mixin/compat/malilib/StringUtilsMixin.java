@@ -14,10 +14,12 @@ public class StringUtilsMixin {
     private static String modifyName(Operation<String> original) {
         String name = original.call();
 
-        if (name == null || "default".equals(CjsahMasaExtension.cachedServerName)) {
+        String serverName = CjsahMasaExtension.getCachedServerName();
+
+        if (name == null || "default".equals(serverName)) {
             return name;
         }
 
-        return name + "_" + CjsahMasaExtension.cachedServerName;
+        return name + "_" + serverName;
     }
 }
