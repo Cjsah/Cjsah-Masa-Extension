@@ -24,5 +24,10 @@
   ],
   "depends": {
     "minecraft": "${minecraft_support}"
+  },
+  "suggests": {
+    "servux": "*",
+    "malilib": "*",
+    "litematica": "*"
   }
 }

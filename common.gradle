@@ -25,26 +25,6 @@ configurations {
     }
 }
 
-repositories {
-    mavenLocal()
-    maven {
-        name 'mavenCentral'
-        url 'https://repo1.maven.org/maven2/'
-    }
-    maven {
-        name 'MasaMaven'
-        url 'https://masa.dy.fi/maven'
-    }
-    maven {
-        name 'CjsahMaven'
-        url 'https://server.cjsah.net:1002/maven/'
-    }
-    maven {
-        name 'CurseMaven'
-        url "https://www.cursemaven.com"
-    }
-}
-
 loom {
     runConfigs.configureEach {
         runDir '../../run'
@@ -99,9 +79,42 @@ if (mcVersion >= 260000) {
 }
 JavaVersion MIXIN_COMPATIBILITY_LEVEL = TARGET_JAVA_VERSION
 
+repositories {
+    maven {
+        name 'MasaMaven'
+        url 'https://masa.dy.fi/maven/sakura-ryoko'
+        content {
+            includeGroupAndSubgroups("fi.dy.masa")
+        }
+    }
+    maven {
+        name 'Modrinth'
+        url 'https://api.modrinth.com/maven'
+        content {
+            includeGroup "maven.modrinth"
+        }
+    }
+    maven {
+        name 'Nucleoid'
+        url 'https://maven.nucleoid.xyz/'
+        content {
+            includeGroupAndSubgroups("me.lucko")
+        }
+    }
+    maven {
+        name 'FallenBreath'
+        url 'https://maven.fallenbreath.me/releases'
+        content {
+            includeGroupAndSubgroups("me.fallenbreath")
+        }
+    }
+    mavenCentral()
+}
+
 dependencies {
     // from https://github.com/TISUnion/Carpet-TIS-Addition/blob/master/common.gradle#L41-L54
     def autoImplementation = { dep -> unobfuscated ? implementation(dep) : modImplementation(dep) }
+    def autoRuntimeOnly = { dep -> unobfuscated ? runtimeOnly(dep) : modRuntimeOnly(dep) }
 
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     if (!unobfuscated) {
@@ -112,16 +125,15 @@ dependencies {
 
     autoImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    // fabric-carpet
-    autoImplementation("carpet:fabric-carpet:${project.carpet_core_version}")
-    // jep
-    include(autoImplementation 'jep:jep:2.24')
-    // jsr305
-    implementation 'com.google.code.findbugs:jsr305:3.0.2'
-    // mixin-extras
-    if (mcVersion < 12100) {
-        include(modImplementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:${project.mixinextras_version}")))
-    }
+    autoRuntimeOnly "me.lucko:fabric-permissions-api:${permissions_api_version}"
+    autoImplementation "maven.modrinth:servux:${servux_version}"
+
+    autoImplementation "fi.dy.masa.malilib:malilib-fabric-${malilib_version}"
+
+    autoImplementation "maven.modrinth:litematica:${litematica_version}"
+    autoImplementation "maven.modrinth:minihud:${minihud_version}"
+
+
 }
 
 String versionSuffix = project.getVersionSuffix()

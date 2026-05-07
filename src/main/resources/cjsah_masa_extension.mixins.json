@@ -3,13 +3,18 @@
   "minVersion": "0.8",
   "package": "net.cjsah.mod.masaextension.mixin",
   "compatibilityLevel": "JAVA_21",
+  "plugin": "net.cjsah.mod.masaextension.mixinplugin.ConditionMixinPlugin",
   "mixins": [
-  ],
-  "server": [
-  ],
-  "client": [
+    "compat.litematica.EntitiesDataStorageMixin",
+    "compat.malilib.StringUtilsMixin",
+    "compat.minihud.EntitiesDataManagerMixin",
+    "compat.servux.HudDataProviderMixin",
+    "compat.servux.LitematicsDataProviderMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "client": [
+    "MinecraftMixin"
+  ]
 }
