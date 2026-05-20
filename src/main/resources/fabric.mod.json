@@ -17,6 +17,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
+      "net.cjsah.mod.masaextension.CjsahMasaExtension"
     ]
   },
   "mixins": [

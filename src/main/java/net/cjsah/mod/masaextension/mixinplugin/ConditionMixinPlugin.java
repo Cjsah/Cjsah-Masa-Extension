@@ -1,6 +1,6 @@
 package net.cjsah.mod.masaextension.mixinplugin;
 
-import net.fabricmc.loader.api.FabricLoader;
+import net.cjsah.mod.masaextension.util.ModUtil;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -22,7 +22,7 @@ public class ConditionMixinPlugin implements IMixinConfigPlugin {
 
         if (trimmed.startsWith("compat.")) {
             String modid = trimmed.split("\\.")[1];
-            return FabricLoader.getInstance().isModLoaded(modid);
+            return ModUtil.isModLoaded(modid);
         }
 
         return true;
