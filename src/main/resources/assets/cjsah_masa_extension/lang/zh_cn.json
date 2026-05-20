@@ -1,3 +1,22 @@
 {
-  "cjsah_masa_extension.server.changed": "服务器已切换到: %s"
+  "cjsah_masa_extension.server.changed": "服务器已切换到: %s",
+
+  "cjsah_masa_extension.config.category.all.name": "全部",
+  "cjsah_masa_extension.config.category.generic.name": "通用",
+  "cjsah_masa_extension.config.category.bungee.name": "跨服",
+
+  "cjsah_masa_extension.config.option.openConfigScreen.name": "打开设置界面",
+  "cjsah_masa_extension.config.option.openConfigScreen.comment": "打开设置界面",
+  "cjsah_masa_extension.config.option.syncAreaContainer.name": "选区同步",
+  "cjsah_masa_extension.config.option.syncAreaContainer.comment": "将选区内所有容器打开一遍, 同步容器中的物品到ChestTracker (需要 ChestTracker)",
+  "cjsah_masa_extension.config.option.hudDataSync.name": "容器预览同步",
+  "cjsah_masa_extension.config.option.hudDataSync.comment": "容器预览后将预览内容同步到ChestTracker (需要 ChestTracker)",
+  "cjsah_masa_extension.config.option.selectionMaterials.name": "材料列表 - 选区",
+  "cjsah_masa_extension.config.option.selectionMaterials.comment": "将选区内容器中的物品算做材料列表中的已有物品。 (需要 ChestTracker)",
+  "cjsah_masa_extension.config.option.entityMaterials.name": "材料列表 - 实体",
+  "cjsah_masa_extension.config.option.entityMaterials.comment": "将投影中实体也计算入材料列表\n例如展示框和展示框中的物品",
+  "cjsah_masa_extension.config.option.containerMaterials.name": "材料列表 - 容器",
+  "cjsah_masa_extension.config.option.containerMaterials.comment": "投影中容器内物品也算入需要的物品",
+  "cjsah_masa_extension.config.option.crossServerSupport.name": "跨服支持",
+  "cjsah_masa_extension.config.option.crossServerSupport.comment": "支持跨服配置文件"
 }

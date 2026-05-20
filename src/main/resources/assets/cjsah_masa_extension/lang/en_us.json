@@ -1,13 +1,22 @@
 {
   "cjsah_masa_extension.server.changed": "Server is changed to: %s",
 
-  "cjsah_masa_extension.config.generic": "Generic",
-  "cjsah_masa_extension.config.generic.name.openConfigScreen": "Open Config Screen",
-  "cjsah_masa_extension.config.generic.comment.openConfigScreen": "Open this config screen",
-  "cjsah_masa_extension.config.generic.name.syncAreaContainer": "Sync Area Container",
-  "cjsah_masa_extension.config.generic.comment.syncAreaContainer": "",
-  "cjsah_masa_extension.config.generic.name.hudDataSync": "Hud Data Sync",
-  "cjsah_masa_extension.config.generic.comment.hudDataSync": "",
-  "cjsah_masa_extension.config.generic.name.entityMaterials": "Entity Materials",
-  "cjsah_masa_extension.config.generic.comment.entityMaterials": ""
+  "cjsah_masa_extension.config.category.all.name": "All",
+  "cjsah_masa_extension.config.category.generic.name": "Generic",
+  "cjsah_masa_extension.config.category.bungee.name": "Cross-Server",
+
+  "cjsah_masa_extension.config.option.openConfigScreen.name": "Open Config Screen",
+  "cjsah_masa_extension.config.option.openConfigScreen.comment": "Open this config screen",
+  "cjsah_masa_extension.config.option.syncAreaContainer.name": "Sync Area Container",
+  "cjsah_masa_extension.config.option.syncAreaContainer.comment": "Open every container within the selected area once to sync the items inside those containers to ChestTracker. (Requires ChestTracker)",
+  "cjsah_masa_extension.config.option.hudDataSync.name": "Hud Data Sync",
+  "cjsah_masa_extension.config.option.hudDataSync.comment": "After previewing a container, sync the previewed contents to ChestTracker. (Requires ChestTracker)",
+  "cjsah_masa_extension.config.option.selectionMaterials.name": "Selection Materials",
+  "cjsah_masa_extension.config.option.selectionMaterials.comment": "In the Material List, also count items stored in containers within the selected area as already available items. (Requires ChestTracker)",
+  "cjsah_masa_extension.config.option.entityMaterials.name": "Entity Materials",
+  "cjsah_masa_extension.config.option.entityMaterials.comment": "Include entities from the schematic in the Material List as well.\ne.g., item frames and the items",
+  "cjsah_masa_extension.config.option.containerMaterials.name": "Container Materials",
+  "cjsah_masa_extension.config.option.containerMaterials.comment": "Items inside containers in the schematic are also counted as required materials.",
+  "cjsah_masa_extension.config.option.crossServerSupport.name": "Cross Server Support",
+  "cjsah_masa_extension.config.option.crossServerSupport.comment": "Cross Server Support"
 }

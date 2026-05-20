@@ -38,7 +38,6 @@ public class CjsahMasaExtension implements ModInitializer {
             InputEventHandler.getInputManager().registerKeyboardInputHandler(InputHandler.getInstance());
             InputEventHandler.getInputManager().registerMouseInputHandler(InputHandler.getInstance());
 
-
             Configs.OPEN_CONFIG_SCREEN.getKeybind().setCallback(((action, key) -> {
                 GuiBase.openGui(new ConfigGui());
                 return true;
