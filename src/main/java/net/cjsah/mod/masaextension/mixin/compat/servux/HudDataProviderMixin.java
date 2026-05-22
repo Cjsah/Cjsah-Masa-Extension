@@ -1,7 +1,7 @@
 package net.cjsah.mod.masaextension.mixin.compat.servux;
 
 import fi.dy.masa.servux.dataproviders.HudDataProvider;
-import net.cjsah.mod.masaextension.CjsahMasaExtension;
+import net.cjsah.mod.masaextension.handler.CrossServerHandler;
 import net.minecraft.nbt.CompoundTag;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,6 +19,6 @@ public class HudDataProviderMixin {
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void test(CallbackInfo ci) {
-        CjsahMasaExtension.applyExtension(this.metadata);
+        CrossServerHandler.applyExtension(this.metadata);
     }
 }

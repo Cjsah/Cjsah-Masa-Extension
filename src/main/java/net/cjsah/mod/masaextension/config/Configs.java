@@ -16,6 +16,7 @@ import fi.dy.masa.malilib.util.FileUtils;
 import fi.dy.masa.malilib.util.JsonUtils;
 import net.cjsah.mod.masaextension.CjsahMasaExtension;
 import net.cjsah.mod.masaextension.ModInfo;
+import net.cjsah.mod.masaextension.handler.CrossServerHandler;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -85,6 +86,8 @@ public class Configs implements IConfigHandler {
                     if (key == ConfigTab.ALL) continue;
                     ConfigUtils.readConfigBase(root, key.getName(), entry.getValue());
                 }
+
+                CrossServerHandler.load(root);
             }
         } else {
             CjsahMasaExtension.LOGGER.error("initConfig(): Failed to load config file '{}'.", configFile.toAbsolutePath());
@@ -106,6 +109,8 @@ public class Configs implements IConfigHandler {
                 if (key == ConfigTab.ALL) continue;
                 ConfigUtils.writeConfigBase(root, key.getName(), entry.getValue());
             }
+
+            CrossServerHandler.save(root);
 
             JsonUtils.writeJsonToFileAsPath(root, dir.resolve(ModInfo.MOD_ID + ".json"));
         } else {
