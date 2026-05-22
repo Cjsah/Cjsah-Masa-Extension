@@ -1,6 +1,8 @@
 {
   "cjsah_masa_extension.server.changed": "Server is changed to: %s",
 
+  "cjsah_masa_extension.gui.button.open_folder": "Open Schematic Folder",
+
   "cjsah_masa_extension.config.category.all.name": "All",
   "cjsah_masa_extension.config.category.generic.name": "Generic",
   "cjsah_masa_extension.config.category.bungee.name": "Cross-Server",

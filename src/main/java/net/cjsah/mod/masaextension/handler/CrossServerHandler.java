@@ -14,6 +14,7 @@ import net.minecraft.network.chat.Component;
 
 public class CrossServerHandler {
     private static String cachedServerName = "default";
+    private static UpdateType cachedType = UpdateType.RESET;
 
     public static String resolveConfigName(String origin) {
         if (!Configs.CROSS_SERVER_SUPPORT.getBooleanValue() || origin == null || "default".equals(cachedServerName)) {
@@ -23,9 +24,19 @@ public class CrossServerHandler {
         return origin + "_" + cachedServerName;
     }
 
-    public static void setCachedServerName(String name) {
-        if (cachedServerName.equals(name)) return;
+    public static void setCachedServerName(String name, UpdateType type) {
+        if (cachedServerName.equals(name)) {
+            if (type.ordinal() < cachedType.ordinal()) {
+                cachedType = type;
+            }
+            return;
+        }
+        if (type.ordinal() > cachedType.ordinal()) {
+            return;
+        }
+
         cachedServerName = name;
+        cachedType = type;
 
         if (Minecraft.getInstance().player != null) {
             Minecraft.getInstance().getChatListener().handleSystemMessage(
@@ -39,6 +50,7 @@ public class CrossServerHandler {
 
     public static void reset() {
         cachedServerName = "default";
+        cachedType = UpdateType.RESET;
     }
 
     public static void applyExtension(CompoundTag metadata) {
@@ -52,7 +64,7 @@ public class CrossServerHandler {
         //#if MC < 12105
         if (metadata.contains(key)) {
             CompoundTag compound = metadata.getCompound(key);
-            setCachedServerName(compound.getString("server_name"));
+            setCachedServerName(compound.getString("server_name"), UpdateType.SYNC);
         }
         //#else
         //$$ Optional<CompoundTag> compound = metadata.getCompound(key);
@@ -72,12 +84,17 @@ public class CrossServerHandler {
             }
         }
 
-        cachedServerName = name;
+        setCachedServerName(name, UpdateType.CONFIG);
     }
 
     public static void save(JsonObject root) {
         root.addProperty("server_name", cachedServerName);
     }
 
-
+    public enum UpdateType {
+        SYNC,
+        MANUAL,
+        CONFIG,
+        RESET,
+    }
 }

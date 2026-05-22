@@ -1,6 +1,8 @@
 {
   "cjsah_masa_extension.server.changed": "服务器已切换到: %s",
 
+  "cjsah_masa_extension.gui.button.open_folder": "打开原理图目录",
+
   "cjsah_masa_extension.config.category.all.name": "全部",
   "cjsah_masa_extension.config.category.generic.name": "通用",
   "cjsah_masa_extension.config.category.bungee.name": "跨服",

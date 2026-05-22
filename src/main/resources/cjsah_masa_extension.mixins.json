@@ -5,9 +5,6 @@
   "compatibilityLevel": "JAVA_21",
   "plugin": "net.cjsah.mod.masaextension.mixinplugin.ConditionMixinPlugin",
   "mixins": [
-    "compat.litematica.EntitiesDataStorageMixin",
-    "compat.malilib.StringUtilsMixin",
-    "compat.minihud.EntitiesDataManagerMixin",
     "compat.servux.HudDataProviderMixin",
     "compat.servux.LitematicsDataProviderMixin"
   ],
@@ -15,6 +12,10 @@
     "defaultRequire": 1
   },
   "client": [
-    "MinecraftMixin"
+    "MinecraftMixin",
+    "compat.litematica.EntitiesDataStorageMixin",
+    "compat.litematica.GuiSchematicLoadMixin",
+    "compat.malilib.StringUtilsMixin",
+    "compat.minihud.EntitiesDataManagerMixin"
   ]
 }
