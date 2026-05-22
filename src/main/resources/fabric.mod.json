@@ -18,6 +18,9 @@
   "entrypoints": {
     "main": [
       "net.cjsah.mod.masaextension.CjsahMasaExtension"
+    ],
+    "modmenu": [
+      "net.cjsah.mod.masaextension.compat.modmenu.ModMenuApiImpl"
     ]
   },
   "mixins": [

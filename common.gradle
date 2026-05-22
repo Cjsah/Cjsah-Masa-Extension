@@ -84,7 +84,7 @@ repositories {
         name 'MasaMaven'
         url 'https://masa.dy.fi/maven/sakura-ryoko'
         content {
-            includeGroupAndSubgroups("fi.dy.masa")
+            includeGroupAndSubgroups "fi.dy.masa"
         }
     }
     maven {
@@ -98,14 +98,21 @@ repositories {
         name 'Nucleoid'
         url 'https://maven.nucleoid.xyz/'
         content {
-            includeGroupAndSubgroups("me.lucko")
+            includeGroupAndSubgroups "me.lucko"
         }
     }
     maven {
         name 'FallenBreath'
         url 'https://maven.fallenbreath.me/releases'
         content {
-            includeGroupAndSubgroups("me.fallenbreath")
+            includeGroupAndSubgroups "me.fallenbreath"
+        }
+    }
+    maven {
+        name "Terraformers"
+        url "https://maven.terraformersmc.com/"
+        content {
+            includeGroupAndSubgroups "com.terraformersmc"
         }
     }
     mavenCentral()
@@ -124,14 +131,17 @@ dependencies {
     }
 
     autoImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    autoRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}+${project.minecraft_version}"
 
-    autoRuntimeOnly "me.lucko:fabric-permissions-api:${permissions_api_version}"
-    autoImplementation "maven.modrinth:servux:${servux_version}"
+    autoRuntimeOnly "me.lucko:fabric-permissions-api:${project.permissions_api_version}"
+    autoImplementation "maven.modrinth:servux:${project.servux_version}"
 
-    autoImplementation "fi.dy.masa.malilib:malilib-fabric-${malilib_version}"
+    autoImplementation "fi.dy.masa.malilib:malilib-fabric-${project.malilib_version}"
 
-    autoImplementation "maven.modrinth:litematica:${litematica_version}"
-    autoImplementation "maven.modrinth:minihud:${minihud_version}"
+    autoImplementation "maven.modrinth:litematica:${project.litematica_version}"
+    autoImplementation "maven.modrinth:minihud:${project.minihud_version}"
+
+    autoImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 }
 
 String versionSuffix = project.getVersionSuffix()
