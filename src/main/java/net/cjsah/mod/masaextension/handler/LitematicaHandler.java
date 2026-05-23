@@ -33,12 +33,7 @@ public class LitematicaHandler {
             return;
         }
 
-        AreaSelection selection = DataManager.getSelectionManager().getCurrentSelection();
-        if (selection == null) {
-            return;
-        }
-
-        List<BlockPos> positions = getSelectionPositions(selection);
+        List<BlockPos> positions = getSelectionPositions();
         if (positions.isEmpty()) {
             return;
         }
@@ -51,7 +46,8 @@ public class LitematicaHandler {
         }
     }
 
-    private static List<BlockPos> getSelectionPositions(AreaSelection selection) {
+    public static List<BlockPos> getSelectionPositions() {
+        AreaSelection selection = DataManager.getSelectionManager().getCurrentSelection();
         if (selection == null) return List.of();
 
         if (DataManager.getSelectionManager().getSelectionMode() == SelectionMode.NORMAL) {
