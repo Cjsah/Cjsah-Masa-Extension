@@ -123,6 +123,13 @@ repositories {
         }
     }
     maven {
+        name 'BlameJared Maven'
+        url 'https://maven.blamejared.com'
+        content {
+            includeGroupAndSubgroups "com.blamejared"
+        }
+    }
+    maven {
         name 'Xander Maven'
         url 'https://maven.isxander.dev/releases'
         content {
@@ -142,6 +149,28 @@ repositories {
         maven {
             name = "JackFredLib-GitHub"
             url = uri("https://maven.pkg.github.com/ponuing/JackFredLib")
+            credentials {
+                username = getProp("GITHUB_ACTOR")
+                password = getProp("GITHUB_TOKEN")
+            }
+            content {
+                includeGroupAndSubgroups("red.jackf")
+            }
+        }
+        maven {
+            name = "ChestTracker-GitHub"
+            url = uri("https://maven.pkg.github.com/ponuing/ChestTracker")
+            credentials {
+                username = getProp("GITHUB_ACTOR")
+                password = getProp("GITHUB_TOKEN")
+            }
+            content {
+                includeGroupAndSubgroups("red.jackf")
+            }
+        }
+        maven {
+            name = "WhereIsIt-GitHub"
+            url = uri("https://maven.pkg.github.com/ponuing/WhereIsIt")
             credentials {
                 username = getProp("GITHUB_ACTOR")
                 password = getProp("GITHUB_TOKEN")
@@ -171,21 +200,16 @@ dependencies {
     autoRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}+${project.minecraft_version}"
 
     autoRuntimeOnly "me.lucko:fabric-permissions-api:${project.permissions_api_version}"
-    autoImplementation "maven.modrinth:servux:${project.servux_version}"
+    autoImplementation "fi.dy.masa.servux:servux-fabric-${project.servux_version}"
 
     autoImplementation "fi.dy.masa.malilib:malilib-fabric-${project.malilib_version}"
 
-    autoImplementation "maven.modrinth:litematica:${project.litematica_version}"
-    autoImplementation "maven.modrinth:minihud:${project.minihud_version}"
+    autoImplementation "fi.dy.masa.litematica:litematica-fabric-${project.litematica_version}"
+    autoImplementation "fi.dy.masa.minihud:minihud-fabric-${project.minihud_version}"
 
     autoImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 
-    var chestTrackerId = mcVersion < 1_21_05 ? "chest-tracker" : "chest-tracker-port"
-    autoImplementation "maven.modrinth:${chestTrackerId}:${project.chesttracker_version}"
-    var whereIsItId = mcVersion < 1_21_05 ? "where-is-it" : "where-is-it-port"
-    autoRuntimeOnly "maven.modrinth:${whereIsItId}:${project.whereisit_version}"
-    autoRuntimeOnly "dev.isxander:yet-another-config-lib:${project.yacl_version}"
-    autoRuntimeOnly "red.jackf.jackfredlib:jackfredlib:${project.jackfredlib_version}"
+    autoImplementation "red.jackf:chesttracker:${project.chesttracker_version}"
 }
 
 String versionSuffix = project.getVersionSuffix()
