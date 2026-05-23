@@ -207,6 +207,8 @@ dependencies {
     autoImplementation "fi.dy.masa.minihud:minihud-fabric-${project.minihud_version}"
 
     autoImplementation "red.jackf:chesttracker:${project.chesttracker_version}"
+    autoImplementation "red.jackf.jackfredlib:jackfredlib:${project.jackfredlib_version}"
+    autoImplementation "red.jackf:whereisit:${project.whereisit_version}"
 
     autoImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 }

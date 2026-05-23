@@ -11,8 +11,8 @@ public class ModUtil {
         return isModLoaded("minihud");
     }
 
-    public static boolean isCheckTrackerLoaded() {
-        return isModLoaded("checktracker");
+    public static boolean isChestTrackerLoaded() {
+        return isModLoaded("chesttracker");
     }
 
     public static boolean isModLoaded(String modid) {

@@ -7,15 +7,16 @@ import fi.dy.masa.malilib.gui.GuiBase;
 import fi.dy.masa.malilib.registry.Registry;
 import net.cjsah.mod.masaextension.config.ConfigGui;
 import net.cjsah.mod.masaextension.config.Configs;
+import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CjsahMasaExtension implements ModInitializer {
+public class CjsahMasaExtension implements ClientModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger(ModInfo.MOD_NAME);
 
     @Override
-    public void onInitialize() {
+    public void onInitializeClient() {
         InitializationHandler.getInstance().registerInitializationHandler(() -> {
             ConfigManager.getInstance().registerConfigHandler(ModInfo.MOD_ID, new Configs());
             Registry.CONFIG_SCREEN.registerConfigScreenFactory(

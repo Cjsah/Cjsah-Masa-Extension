@@ -1,6 +1,7 @@
 package net.cjsah.mod.masaextension.mixin.compat.minihud;
 
 import fi.dy.masa.minihud.data.EntitiesDataManager;
+import net.cjsah.mod.masaextension.handler.ChestTrackerHandler;
 import net.cjsah.mod.masaextension.handler.CrossServerHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -25,6 +26,7 @@ public class EntitiesDataManagerMixin {
     private void receiveBlockEntityData(BlockPos pos, CompoundTag nbt, ResourceLocation type, CallbackInfoReturnable<BlockEntity> cir) {
         if (!nbt.contains("Items")) return;
         ListTag items = nbt.getList("Items", Tag.TAG_COMPOUND);
-
+        ChestTrackerHandler.saveItems(pos, items);
     }
 }
+
