@@ -7,7 +7,7 @@ import fi.dy.masa.litematica.gui.GuiSchematicLoad;
 import fi.dy.masa.malilib.gui.button.ButtonGeneric;
 import fi.dy.masa.malilib.util.StringUtils;
 import net.cjsah.mod.masaextension.ModInfo;
-import net.cjsah.mod.masaextension.handler.LitematicaButtonsHandler;
+import net.cjsah.mod.masaextension.handler.LitematicaHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -28,7 +28,7 @@ public abstract class GuiSchematicLoadMixin extends GuiSchematicBrowserBase {
         x = x - width - 4;
         ButtonGeneric button = new ButtonGeneric(x, y, width, 20, label);
 
-        this.addButton(button, LitematicaButtonsHandler.openFolderListener());
+        this.addButton(button, LitematicaHandler.openFolderListener());
         xRef.set(x);
     }
 }

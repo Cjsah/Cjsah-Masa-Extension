@@ -13,6 +13,10 @@ on:
       - gradle.properties
       - settings.gradle
 
+permissions:
+  contents: read
+  packages: read
+
 jobs:
   build:
     strategy:
@@ -24,6 +28,8 @@ jobs:
     env:
       CI_BUILD: true
       PR_BUILD: false
+      GITHUB_ACTOR: ${{ github.actor }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
