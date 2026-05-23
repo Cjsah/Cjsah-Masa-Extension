@@ -12,9 +12,7 @@ import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.cjsah.mod.masaextension.config.Configs;
 import net.cjsah.mod.masaextension.util.LitematicaUtil;
 import net.minecraft.Util;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.Level;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
