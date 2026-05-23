@@ -15,6 +15,7 @@
     "MinecraftMixin",
     "compat.litematica.EntitiesDataStorageMixin",
     "compat.litematica.GuiSchematicLoadMixin",
+    "compat.litematica.MaterialListUtilsMixin",
     "compat.malilib.StringUtilsMixin",
     "compat.minihud.EntitiesDataManagerMixin",
     "compat.minihud.InventoryOverlayHandlerMixin"
