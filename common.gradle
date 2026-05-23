@@ -17,6 +17,13 @@ ext {
         String versionSuffix = (buildNumber != null ? "+${buildType}.${buildNumber}" : "")
         return versionSuffix
     }
+    getProp = {String key ->
+        def value = System.getenv(key)
+        if (value == null && project.hasProperty(key)) {
+            value = project.property(key)
+        }
+        return value
+    }
 }
 
 configurations {
@@ -115,6 +122,36 @@ repositories {
             includeGroupAndSubgroups "com.terraformersmc"
         }
     }
+    maven {
+        name 'Xander Maven'
+        url 'https://maven.isxander.dev/releases'
+        content {
+            includeGroupAndSubgroups "dev.isxander"
+            includeGroupAndSubgroups "org.quiltmc"
+        }
+    }
+    if (mcVersion < 1_21_05) {
+        maven {
+            name = "JackFredMaven"
+            url = uri("https://maven.jackf.red/releases")
+            content {
+                includeGroupAndSubgroups("red.jackf")
+            }
+        }
+    } else {
+        maven {
+            name = "JackFredLib-GitHub"
+            url = uri("https://maven.pkg.github.com/ponuing/JackFredLib")
+            credentials {
+                username = getProp("GITHUB_ACTOR")
+                password = getProp("GITHUB_TOKEN")
+            }
+            content {
+                includeGroupAndSubgroups("red.jackf")
+            }
+        }
+    }
+
     mavenCentral()
 }
 
@@ -142,6 +179,13 @@ dependencies {
     autoImplementation "maven.modrinth:minihud:${project.minihud_version}"
 
     autoImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+
+    var chestTrackerId = mcVersion < 1_21_05 ? "chest-tracker" : "chest-tracker-port"
+    autoImplementation "maven.modrinth:${chestTrackerId}:${project.chesttracker_version}"
+    var whereIsItId = mcVersion < 1_21_05 ? "where-is-it" : "where-is-it-port"
+    autoRuntimeOnly "maven.modrinth:${whereIsItId}:${project.whereisit_version}"
+    autoRuntimeOnly "dev.isxander:yet-another-config-lib:${project.yacl_version}"
+    autoRuntimeOnly "red.jackf.jackfredlib:jackfredlib:${project.jackfredlib_version}"
 }
 
 String versionSuffix = project.getVersionSuffix()
@@ -156,9 +200,9 @@ base {
 
 replaceToken {
     targetSourceSets.set([sourceSets.main])
-    replace("@MOD_ID@"      , mod_id.replace("-", "_"))
-    replace("@MOD_NAME@"    , mod_name)
-    replace("@MOD_VERSION@" , versionWithMC)
+    replace("@MOD_ID@", mod_id.replace("-", "_"))
+    replace("@MOD_NAME@", mod_name)
+    replace("@MOD_VERSION@", versionWithMC)
     replaceIn("net/cjsah/mod/masaextension/ModInfo")
 }
 

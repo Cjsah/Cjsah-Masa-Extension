@@ -5,6 +5,12 @@ plugins {
     id('com.replaymod.preprocess').version("${preprocessor_version}")
 }
 
+File localPropertiesFile = rootProject.file("local.properties")
+Properties localProperties = new Properties()
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withInputStream { localProperties.load(it) }
+}
+
 preprocess {
     strictExtraMappings = false
 
@@ -30,6 +36,8 @@ preprocess {
 //    mc260100.link(mc260102, null)
 
     for (final def node in getNodes()) {
-        findProject(node.project).ext.mcVersion = node.mcVersion
+        var project = findProject(node.project)
+        project.ext.mcVersion = node.mcVersion
+        localProperties.each { key, value -> project.ext[key as String] = value }
     }
 }
