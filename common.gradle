@@ -199,7 +199,6 @@ dependencies {
     autoImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     autoRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}+${project.minecraft_version}"
 
-    autoRuntimeOnly "me.lucko:fabric-permissions-api:${project.permissions_api_version}"
     autoImplementation "fi.dy.masa.servux:servux-fabric-${project.servux_version}"
 
     autoImplementation "fi.dy.masa.malilib:malilib-fabric-${project.malilib_version}"
@@ -207,9 +206,9 @@ dependencies {
     autoImplementation "fi.dy.masa.litematica:litematica-fabric-${project.litematica_version}"
     autoImplementation "fi.dy.masa.minihud:minihud-fabric-${project.minihud_version}"
 
-    autoImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-
     autoImplementation "red.jackf:chesttracker:${project.chesttracker_version}"
+
+    autoImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 }
 
 String versionSuffix = project.getVersionSuffix()
