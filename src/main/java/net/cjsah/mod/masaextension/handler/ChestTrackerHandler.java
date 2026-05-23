@@ -25,7 +25,6 @@ public class ChestTrackerHandler {
 
     @SuppressWarnings("UnstableApiUsage")
     public static void saveItems(BlockPos pos, ListTag items) {
-        System.out.println("save");
         if (!ModUtil.isChestTrackerLoaded()) return;
 
         MemoryBank bank = MemoryBankAccess.INSTANCE.getLoaded().orElse(null);

@@ -80,7 +80,7 @@ public class CrossServerHandler {
         if (root.has("server_name")) {
             String serverName = root.get("server_name").getAsString();
             if (serverName != null && !serverName.trim().isEmpty()) {
-                name = serverName;
+                name = serverName.trim();
             }
         }
 
