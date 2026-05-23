@@ -16,8 +16,11 @@
   "icon": "assets/${id}/icon.png",
   "environment": "*",
   "entrypoints": {
-    "client": [
+    "main": [
       "net.cjsah.mod.masaextension.CjsahMasaExtension"
+    ],
+    "client": [
+      "net.cjsah.mod.masaextension.CjsahMasaExtensionClient"
     ],
     "modmenu": [
       "net.cjsah.mod.masaextension.compat.modmenu.ModMenuApiImpl"

@@ -8,20 +8,17 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import red.jackf.chesttracker.api.ClientBlockSource;
 import red.jackf.chesttracker.api.memory.Memory;
 import red.jackf.chesttracker.api.memory.MemoryBank;
 import red.jackf.chesttracker.api.memory.MemoryBankAccess;
 import red.jackf.chesttracker.api.providers.MemoryBuilder;
-import red.jackf.chesttracker.api.providers.ProviderUtils;
 import red.jackf.chesttracker.api.providers.defaults.DefaultProvider;
 import red.jackf.chesttracker.impl.util.CachedClientBlockSource;
 import red.jackf.whereisit.api.search.ConnectedBlocksGrabber;
 
 import java.util.List;
-import java.util.Optional;
 
 @Environment(EnvType.CLIENT)
 public class ChestTrackerHandler {
@@ -29,13 +26,10 @@ public class ChestTrackerHandler {
     @SuppressWarnings("UnstableApiUsage")
     public static void saveItems(BlockPos pos, ListTag items) {
         System.out.println("save");
-        if (!ModUtil.isChestTrackerLoaded() || items.isEmpty()) return;
+        if (!ModUtil.isChestTrackerLoaded()) return;
 
         MemoryBank bank = MemoryBankAccess.INSTANCE.getLoaded().orElse(null);
         if (bank == null) return;
-
-        Optional<ResourceLocation> key = ProviderUtils.getPlayersCurrentKey();
-        if (key.isEmpty()) return;
 
         ClientLevel level = Minecraft.getInstance().level;
         RegistryAccess registryAccess = level.registryAccess();
