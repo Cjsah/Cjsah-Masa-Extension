@@ -3,6 +3,7 @@ package net.cjsah.mod.masaextension.mixin.compat.minihud;
 import com.llamalad7.mixinextras.sugar.Local;
 import fi.dy.masa.malilib.render.InventoryOverlay;
 import fi.dy.masa.minihud.renderer.InventoryOverlayHandler;
+import net.cjsah.mod.masaextension.config.Configs;
 import net.cjsah.mod.masaextension.handler.ChestTrackerHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -26,7 +27,7 @@ public class InventoryOverlayHandlerMixin {
 
     @Inject(method = "getTargetInventory", at = @At(value = "INVOKE", target = "Lfi/dy/masa/minihud/renderer/InventoryOverlayHandler;getTargetInventoryFromBlock(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/nbt/CompoundTag;)Lfi/dy/masa/malilib/render/InventoryOverlay$Context;"))
     private void syncToChestTracker(Minecraft mc, CallbackInfoReturnable<InventoryOverlay.Context> cir, @Local Level world, @Local BlockPos pos, @Local CompoundTag nbt) {
-        if (!(world instanceof ServerLevel) || !nbt.contains("Items")) return;
+        if (!Configs.HUD_DATA_SYNC.getBooleanValue() || !(world instanceof ServerLevel) || !nbt.contains("Items")) return;
         long currentTime = System.currentTimeMillis();
         if (pos.equals(this.lastPos)) {
             if (currentTime - this.lastTime < 250) {

@@ -1,6 +1,7 @@
 package net.cjsah.mod.masaextension.mixin.compat.minihud;
 
 import fi.dy.masa.minihud.data.EntitiesDataManager;
+import net.cjsah.mod.masaextension.config.Configs;
 import net.cjsah.mod.masaextension.handler.ChestTrackerHandler;
 import net.cjsah.mod.masaextension.handler.CrossServerHandler;
 import net.minecraft.core.BlockPos;
@@ -24,7 +25,7 @@ public class EntitiesDataManagerMixin {
 
     @Inject(method = "handleBlockEntityData", at = @At(value = "INVOKE", target = "Ljava/util/concurrent/ConcurrentHashMap;put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"))
     private void receiveBlockEntityData(BlockPos pos, CompoundTag nbt, ResourceLocation type, CallbackInfoReturnable<BlockEntity> cir) {
-        if (!nbt.contains("Items")) return;
+        if (!Configs.HUD_DATA_SYNC.getBooleanValue() || !nbt.contains("Items")) return;
         ListTag items = nbt.getList("Items", Tag.TAG_COMPOUND);
         ChestTrackerHandler.saveItems(pos, items);
     }
