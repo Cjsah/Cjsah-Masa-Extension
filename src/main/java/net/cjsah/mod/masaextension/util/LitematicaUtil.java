@@ -27,7 +27,7 @@ public class LitematicaUtil {
 
             BlockPos size = box.getSize();
 
-            List<BlockPos> positions = new ArrayList<>(size.getX() * size.getY() * size.getZ());
+            List<BlockPos> positions = new ArrayList<>(Math.abs(size.getX() * size.getY() * size.getZ()));
             for (int x = minX; x <= maxX; x++) {
                 for (int y = minY; y <= maxY; y++) {
                     for (int z = minZ; z <= maxZ; z++) {

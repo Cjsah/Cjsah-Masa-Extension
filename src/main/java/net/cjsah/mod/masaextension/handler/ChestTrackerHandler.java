@@ -4,6 +4,7 @@ import fi.dy.masa.litematica.materials.MaterialListUtils;
 import fi.dy.masa.malilib.util.InventoryUtils;
 import fi.dy.masa.malilib.util.ItemType;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import net.cjsah.mod.masaextension.util.InventoryUtil;
 import net.cjsah.mod.masaextension.util.ModUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -42,6 +43,7 @@ public class ChestTrackerHandler {
         if (bank == null) return;
 
         ClientLevel level = Minecraft.getInstance().level;
+        if (level == null) return;
         RegistryAccess registryAccess = level.registryAccess();
 
         ClientBlockSource cbs = new CachedClientBlockSource(level, pos);
@@ -51,10 +53,7 @@ public class ChestTrackerHandler {
         List<BlockPos> connectedBlocks = ConnectedBlocksGrabber.getConnected(cbs.level(), cbs.blockState(), cbs.pos());
         BlockPos rootPos = connectedBlocks.getFirst();
 
-        List<ItemStack> stacks = items.stream()
-            .map(tag -> ItemStack.parse(registryAccess, tag).orElse(ItemStack.EMPTY))
-            .filter(stack -> !stack.isEmpty())
-            .toList();
+        List<ItemStack> stacks = InventoryUtil.serializeItems(items, registryAccess);
 
         Memory memory = MemoryBuilder.create(stacks)
             .inContainer(cbs.blockState().getBlock())

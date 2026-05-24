@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "plugin": "net.cjsah.mod.masaextension.mixinplugin.ConditionMixinPlugin",
   "mixins": [
+    "ItemFrameAccessor",
     "compat.servux.HudDataProviderMixin",
     "compat.servux.LitematicsDataProviderMixin"
   ],
@@ -15,6 +16,7 @@
     "MinecraftMixin",
     "compat.litematica.EntitiesDataStorageMixin",
     "compat.litematica.GuiSchematicLoadMixin",
+    "compat.litematica.MaterialListUtilsInvoker",
     "compat.litematica.MaterialListUtilsMixin",
     "compat.malilib.StringUtilsMixin",
     "compat.minihud.EntitiesDataManagerMixin",
