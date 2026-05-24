@@ -25,15 +25,8 @@ public class MaterialListUtilsMixin {
         return LitematicaHandler.getMaterials(schematic, subRegions, countsTotal, player);
     }
 
-    @WrapOperation(method = "getMaterialList", at = @At(value = "INVOKE", target = "Lfi/dy/masa/litematica/materials/MaterialListUtils;getInventoryItemCounts(Lnet/minecraft/world/Container;)Lit/unimi/dsi/fastutil/objects/Object2IntOpenHashMap;"))
+    @WrapOperation(method = {"getMaterialList", "updateAvailableCounts"}, at = @At(value = "INVOKE", target = "Lfi/dy/masa/litematica/materials/MaterialListUtils;getInventoryItemCounts(Lnet/minecraft/world/Container;)Lit/unimi/dsi/fastutil/objects/Object2IntOpenHashMap;"))
     private static Object2IntOpenHashMap<ItemType> initApplySelectionArea(Container inv, Operation<Object2IntOpenHashMap<ItemType>> original) {
-        Object2IntOpenHashMap<ItemType> result = original.call(inv);
-        LitematicaHandler.applySelectionArea(result);
-        return result;
-    }
-
-    @WrapOperation(method = "updateAvailableCounts", at = @At(value = "INVOKE", target = "Lfi/dy/masa/litematica/materials/MaterialListUtils;getInventoryItemCounts(Lnet/minecraft/world/Container;)Lit/unimi/dsi/fastutil/objects/Object2IntOpenHashMap;"))
-    private static Object2IntOpenHashMap<ItemType> updateApplySelectionArea(Container inv, Operation<Object2IntOpenHashMap<ItemType>> original) {
         Object2IntOpenHashMap<ItemType> result = original.call(inv);
         LitematicaHandler.applySelectionArea(result);
         return result;
